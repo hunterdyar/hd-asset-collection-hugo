@@ -1,0 +1,14 @@
+<header>
+{{ with .Site.Menus.parent -}}
+  <nav>
+  {{ range . -}}
+    <a href="{{ .URL }}">{{ .Name }}</a>
+  {{ end -}}
+  </nav>
+{{ end -}}
+  <div>
+    <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+  </div>
+  {{ partial "search.html" . }}
+</header>
+<hr />

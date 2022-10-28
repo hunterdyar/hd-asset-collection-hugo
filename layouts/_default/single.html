@@ -1,0 +1,33 @@
+{{ define "main" -}}
+<div>
+  <div class="title">
+    <h1>{{ .Title }}</h1>
+  </div>
+  {{ if .Date -}}
+  <div class="meta">{{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02 15:04") }}</div>
+  {{ end -}}
+  {{ $taxo := "tags" -}}
+  {{ if .Param $taxo -}}
+  <div class="meta">
+    {{ $data := newScratch }}
+    {{ range .Param $taxo -}}
+    {{ $name := . -}}
+    {{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | anchorize)) }}
+    {{ $data.Set "url" .Permalink }}
+    {{ end }}
+    {{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
+    {{ $data.Set "url" .Permalink }}
+    {{ end }}
+    <div class="tag"><a href="{{ $data.Get "url" }}">#{{ $name }}</a></div>
+    {{ end -}}
+  </div>
+  {{ end -}}
+  <article>
+    <section>
+      {{ .Content -}}
+    </section>
+    {{ partial "license.html" . }}
+  </article>
+
+</div>
+{{ end -}}

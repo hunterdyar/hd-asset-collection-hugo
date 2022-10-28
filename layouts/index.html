@@ -1,0 +1,29 @@
+{{ define "main" -}}
+<div>
+  {{ .Content -}}
+</div>
+
+<!-- Groups content according to content section.-->
+{{ range .Pages.GroupBy "Section" }}
+<!-- Checks for existence of _index.md for a section; if available, pulls from "title" in front matter -->
+{{ $category := .Key}}
+
+{{ with $.Site.GetPage "section" .Key }}
+<h3><a href="{{ .Permalink }}">{{.Title}}</a></h3>
+{{ else }}
+<!-- If no _index.md is available, ".Key" defaults to the section title and filters to title casing -->
+<h3><a href="{{ .Permalink }}">{{ .Key | title }}</a></h3>
+{{ end }}
+<ul>
+    {{ range ( where $.Site.RegularPages "Type" "in" site.Params.mainSections ) -}}
+    {{if eq .Section $category}}
+    <li>
+    <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+    {{ end }}
+</ul>
+{{ end }}
+
+{{ template "_internal/pagination.html" . -}}
+{{ end -}}

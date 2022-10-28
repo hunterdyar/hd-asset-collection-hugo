@@ -1,0 +1,9 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-us'
+mainSection = ['blog', 'docs']
+title = 'Hunters Asset Collection'
+theme = "Simple-Style"
+subtitle = "Sub title of the site"
+search = "duckduckgo"
+[Params]
+mainSections = ['materials','models','sampleprojects']

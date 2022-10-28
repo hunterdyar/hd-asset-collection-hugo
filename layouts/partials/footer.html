@@ -1,0 +1,11 @@
+<hr />
+<footer>
+  <p>
+{{- if .Site.Copyright -}}
+  {{ .Site.Copyright | markdownify }}
+{{- else -}}
+  2022 Hunter Dyar.
+  License information is set per asset, see each assets page for licensing details.
+{{- end -}}
+  </p>
+</footer>
