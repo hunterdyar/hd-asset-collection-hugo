@@ -2,12 +2,23 @@
 <div>
   <h1>{{ .Title }}</h1>
 </div>
-<ul class="list">
-  {{ range .Paginator.Pages -}}
-  <li class="item">
-    <div class="title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
-  </li>
+<div class="grid-list">
+  {{ range $page := .Paginator.Pages -}}
+  <div class="grid-item">
+    {{with .Param "preview"}}
+    {{ $image := resources.GetMatch . }}
+    {{ with $image }}
+    {{ $image := $image.Fit "250x250" }}
+    <a href="{{ $page.RelPermalink }}">
+      <img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" class="preview">
+    </a>
+      {{ end }}
+    {{ end }}
+    <p style="text-align: center">
+     <a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+    </p>
+  </div>
   {{ end -}}
-</ul>
+</div>
 {{ template "_internal/pagination.html" . -}}
 {{ end -}}

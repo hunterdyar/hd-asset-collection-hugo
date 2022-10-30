@@ -24,10 +24,37 @@
   {{ end -}}
   <article>
     <section>
+      {{with .Param "preview"}}
+        {{ $image := resources.GetMatch . }}
+        {{if $image}}
+        {{ $image := $image.Fit "920x400" }}
+        {{ with $image }}
+          <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" class="preview">
+        {{ end }}
+        {{else}}
+        DEBUG cant find image
+        {{end}}
+      {{end}}
+      <h4>About</h4>
       {{ .Content -}}
+
+      {{if (or (isset .Params "download") (isset .Params "downloads"))}}
+      <h4>Download</h4>
+      <ul>
+        {{with .Param "download"}}
+          {{ with resources.GetMatch . }}
+            <li><a href="{{ .Permalink }}">{{ .Name }}</a></li>
+          {{ end }}
+        {{end}}
+        {{range .Param "downloads"}}
+          {{ with resources.GetMatch . }}
+            <li><a href="{{ .Permalink }}">{{ .Name }}</a></li>
+          {{ end }}
+        {{end}}
+      </ul>
+      {{end}}
     </section>
     {{ partial "license.html" . }}
   </article>
-
 </div>
 {{ end -}}

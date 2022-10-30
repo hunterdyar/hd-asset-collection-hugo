@@ -6,13 +6,23 @@ body {
     padding: 10px;
     color: #333;
 }
+
+.preview
+{
+    margin-left:auto;
+    margin-right: auto;
+    display:block;
+}
+
 hr{
   color: #cccccc
 }
+
 .license{
   padding-top: 1em;
   padding-bottom: 1em;
 }
+
 header {
     margin: 0;
     padding: 0;
@@ -44,6 +54,17 @@ section {
     margin-right: 10px;
 }
 
+.grid-list
+{
+    display: grid;
+    gap: 10px;
+    grid-template-columns:auto auto auto auto;
+    grid-auto-rows: minmax(250px, auto);
+}
+.grid-item
+{
+
+}
 
 header a,
 header a:visited,
