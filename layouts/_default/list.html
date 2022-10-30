@@ -2,6 +2,8 @@
 <div>
   <h1>{{ .Title }}</h1>
 </div>
+
+<!-- Todo: If page.param view is grid, or page.param view is list, then do normal ul li list.-->
 <div class="grid-list">
   {{ range $page := .Paginator.Pages -}}
   <div class="grid-item">
