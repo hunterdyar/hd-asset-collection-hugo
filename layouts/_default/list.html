@@ -4,6 +4,9 @@
 </div>
 
 <!-- Todo: If page.param view is grid, or page.param view is list, then do normal ul li list.-->
+
+{{ if eq (.Param "view") "grid" }}
+
 <div class="grid-list">
   {{ range $page := .Paginator.Pages -}}
   <div class="grid-item">
@@ -22,5 +25,18 @@
   </div>
   {{ end -}}
 </div>
+
+{{ else }}
+
+<ul class="list">
+  {{ range $page := .Paginator.Pages -}}
+  <li class="grid-item">
+     <a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+  </li>
+  {{ end -}}
+</ul>
+
+{{ end }}
+
 {{ template "_internal/pagination.html" . -}}
 {{ end -}}
