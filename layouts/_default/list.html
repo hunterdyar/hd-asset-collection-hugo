@@ -3,9 +3,7 @@
   <h1>{{ .Title }}</h1>
 </div>
 
-<!-- Todo: If page.param view is grid, or page.param view is list, then do normal ul li list.-->
-
-{{ if eq (.Param "view") "grid" }}
+{{ if (eq (.Param "view") "grid" )}}
 
 <div class="grid-list">
   {{ range $page := .Paginator.Pages -}}
@@ -27,6 +25,9 @@
 </div>
 
 {{ else }}
+
+<!-- we don't need to bother checking if the param "view" is "list" because list will be the default.
+If I add more views, they won't be called "list". -->
 
 <ul class="list">
   {{ range $page := .Paginator.Pages -}}
