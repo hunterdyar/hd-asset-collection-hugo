@@ -53,6 +53,18 @@
         {{end}}
       </ul>
       {{end}}
+
+      {{if (or (isset .Params "link") (isset .Params "links"))}}
+      <h4>Link</h4>
+      <ul>
+        {{with .Param "link"}}
+        <li><a href="{{ . }}">{{ . }}</a></li>
+        {{end}}
+        {{range .Param "links"}}
+        <li><a href="{{ . }}">{{ . }}</a></li>
+        {{end}}
+      </ul>
+      {{end}}
     </section>
     {{ partial "license.html" . }}
   </article>
