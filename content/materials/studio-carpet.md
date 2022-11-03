@@ -4,7 +4,7 @@ author: AL
 tags: ["blender"]
 license: cc-by
 preview: "**/studio-carpet/studio-carpet-preview.png"
-download: "**/studio-carpet/Studio Carpet.blend"
+download: "**/studio-carpet/StudioCarpet.blend"
 ---
 
 
