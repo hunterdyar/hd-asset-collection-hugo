@@ -1,8 +1,6 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://assets.hdyar.com/'
 languageCode = 'en-us'
-mainSection = ['blog', 'docs']
 title = 'Hunters Asset Collection'
-subtitle = "Sub title of the site"
 search = "duckduckgo"
 assetDir = "/assets"
 [Params]
