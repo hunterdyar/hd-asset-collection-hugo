@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = 'http://assets.hdyar.com/'
 languageCode = 'en-us'
 mainSection = ['blog', 'docs']
 title = 'Hunters Asset Collection'
