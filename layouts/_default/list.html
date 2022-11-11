@@ -12,8 +12,8 @@
     {{ $image := resources.GetMatch . }}
     {{ with $image }}
     {{ $image := $image.Fit "250x250" }}
-    <a href="{{ $page.RelPermalink }}">
-      <img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" class="preview">
+    <a href="{{ $page.Permalink }}">
+      <img src="{{ $image.Permalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" class="preview">
     </a>
       {{ end }}
     {{ end }}
